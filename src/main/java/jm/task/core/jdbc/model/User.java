@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.sql.ResultSet;
 import java.util.Objects;
 
-//import static jm.task.core.jdbc.util.Util.connection;
 @Entity
 @Table(name = "users")
 public class User {

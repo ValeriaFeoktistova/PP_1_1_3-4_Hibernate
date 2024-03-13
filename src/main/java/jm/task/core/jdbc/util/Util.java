@@ -20,15 +20,14 @@ public class Util {
 
     private static SessionFactory buildSessionFactory() {
         try {
-            // Настройка Hibernate для использования соединения с базой данных
             Configuration configuration = new Configuration();
             configuration.setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
             configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/wednesday");
             configuration.setProperty("hibernate.connection.username", "root");
-            configuration.setProperty("hibernate.connection.password", "admin");
+            configuration.setProperty("hibernate.connection.password", "SECRET");
             configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
             configuration.setProperty("hibernate.show_sql", "true");
-            //configuration.setProperty("hibernate.hbm2ddl.auto", "update");
+
             configuration.addAnnotatedClass(User.class);
             return configuration.buildSessionFactory();
         } catch (Exception e) {
@@ -45,7 +44,6 @@ public class Util {
         getSessionFactory().close();
     }
 
-/////////////////////////////////////////////JDBC
     public static Util getInstance() {
 
         Util locaInstance = INSTANCE;
@@ -59,23 +57,6 @@ public class Util {
         }
         return INSTANCE;
     }
-
-    public final String URL = "jdbc:mysql://localhost:3306/wednesday";
-    public final String USERNAME = "root";
-    public final String PASSWORD = "admin";
-
-    public static Connection connection;
-
-    {
-        try {
-            connection = getConnection(URL, USERNAME, PASSWORD);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public Statement statement;
-
 }
 
 
